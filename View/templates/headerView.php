@@ -4,5 +4,7 @@
         <div>
             <a href="create-article.php">Create Article</a>
             <a href="articles.php">Articles</a>
+            <a href="create-category.php">Create Category</a>
+            <a href="categories.php">Categories</a>
         </div>
     </nav>

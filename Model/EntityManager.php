@@ -21,9 +21,7 @@ class EntityManager
                         :created_at
                 )
         ";
-
         $req = $this->dbConnection->prepare($sql);
-
         $req->execute(array(
             "title" => $article->getTitle(),
             "content" => $article->getContent(),
@@ -39,4 +37,30 @@ class EntityManager
         $query->execute([$id]);
     }
 
+    public function persistCategory(Category $category)
+    {
+        $sql = "INSERT INTO category (title, color, status, created_at)
+                VALUES (
+                        :title, 
+                        :color, 
+                        :status,
+                        :created_at
+                )
+        ";
+        $req = $this->dbConnection->prepare($sql);
+        $req->execute(array(
+            "title" => $category->getTitle(),
+            "created_at" => $category->getCreatedAt()->format('Y-m-d H:i:s'),
+            "status" => $category->getStatus(),
+            "color" => $category->getColor()
+            
+        ));
+    }
+
+    public function deleteCategory($id)
+    {
+        $sql = 'DELETE FROM category WHERE id = ?';
+        $query = $this->dbConnection->prepare($sql);
+        $query->execute([$id]);
+    }
 }

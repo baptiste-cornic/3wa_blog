@@ -6,10 +6,10 @@ abstract class Publishable
     public const STATUS_ARCHIVED = 'archived';
     public const STATUS_PUBLISHED = 'published';
 
-    private int $id;
-    private string $title; 
-    private \DateTime $createdAt;
-    private string $status;
+    protected int $id;
+    protected string $title; 
+    protected \DateTime $createdAt;
+    protected string $status;
 
     public function __construct()
     {

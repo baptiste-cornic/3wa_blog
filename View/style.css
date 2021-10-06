@@ -26,8 +26,7 @@ a{color: black;
     text-decoration: none;   
 }
 
-nav div a{
-    font-size: 20px;
+nav div a{font-size: 20px;
 }
 
 a:hover{color: orange;
@@ -37,11 +36,15 @@ nav div a{margin: 25px;
 }
 
 
-.content{width: 800px;
-    margin: auto;
-
+section{display: flex;
 }
 
-.content div{margin: 20px; 
+.articles_index{width: 70%;
 }
 
+.category{margin: 10px auto;
+    border-left: 1px solid black;
+}
+
+.category div, .articles_index div, .articles div{padding: 25px;
+}
