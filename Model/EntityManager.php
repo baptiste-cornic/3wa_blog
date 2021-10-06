@@ -1,6 +1,6 @@
 <?php
 
-require_once('Database/MysqlDatabaseConnection.php');
+require_once(ROOT .'/Model/Database/MysqlDatabaseConnection.php');
 
 class EntityManager
 {
