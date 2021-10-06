@@ -4,6 +4,14 @@ require_once(ROOT . '/Model/Article.php');
 
 class ArticleFactory
 {
+    public function createArticle(string $title, string $content)
+    {
+        $article = new Article();
+        $article->setTitle($title);
+        $article->setContent($content);
+        return $article;
+    }
+
     public function createArticleFromDb(array $article)
     {
         $articleEntity = new Article();
@@ -33,5 +41,4 @@ class ArticleFactory
         return $articles;
     }
 
-    
 }
