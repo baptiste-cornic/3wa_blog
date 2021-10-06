@@ -2,6 +2,7 @@
 
 require_once(ROOT .'/Model/Database/MysqlDatabaseConnection.php');
 require_once(ROOT .'/Model/Article.php');
+require_once(ROOT .'/Factory/ArticleFactory.php');
 
 class ArticleRepository
 {
@@ -17,24 +18,14 @@ class ArticleRepository
     public function findAll(): array
     {
         $sql = "SELECT * FROM article";
-
         $stmt = $this->dbConnexion->prepare($sql);
         $stmt->execute();
         $articlesDb = $stmt->fetchAll();
 
-        $articles = [];
+        $articlesFactory = new ArticleFactory();
+        $articlesDb = $articlesFactory->createArticlesFromDb($articlesDb);
 
-        foreach ($articlesDb as $article) {
-            $articleEntity = new Article();
-            $articleEntity->setId($article['id']);
-            $articleEntity->setTitle($article['title']);
-            $articleEntity->setStatus($article['status']);
-            $articleEntity->setContent($article['content']);
-            $articleEntity->setCreatedAt(new \DateTime($article['created_at']));
-            array_push($articles, $articleEntity);
-        }
-
-        return $articles;
+        return $articlesDb;
     }
 
     public function findLasts(int $nbarticles): array
@@ -45,20 +36,11 @@ class ArticleRepository
         $stmt = $this->dbConnexion->prepare($sql);
         $stmt->execute();
         $articlesDb = $stmt->fetchAll();
-
-        $articles = [];
-
-        foreach ($articlesDb as $article) {
-            $articleEntity = new Article();
-            $articleEntity->setId($article['id']);
-            $articleEntity->setTitle($article['title']);
-            $articleEntity->setStatus($article['status']);
-            $articleEntity->setContent($article['content']);
-            $articleEntity->setCreatedAt(new \DateTime($article['created_at']));
-            array_push($articles, $articleEntity);
-        }
-
-        return $articles;
+        
+        $articlesFactory = new ArticleFactory();
+        $articlesDb = $articlesFactory->createArticlesFromDb($articlesDb);
+        
+        return $articlesDb;
     }
 
     public function findOne($id) 
@@ -67,16 +49,12 @@ class ArticleRepository
 
         $stmt = $this->dbConnexion->prepare($sql);
         $stmt->execute([$id]);
-        $articlesDb = $stmt->fetch();
+        $articleDb = $stmt->fetch();
+    
+        $articlesFactory = new ArticleFactory();
+        $articleDb = $articlesFactory->createArticleFromDb($articleDb);
         
-        $articleEntity = new Article();
-        $articleEntity->setId($articlesDb['id']);
-        $articleEntity->setTitle($articlesDb['title']);
-        $articleEntity->setStatus($articlesDb['status']);
-        $articleEntity->setContent($articlesDb['content']);
-        $articleEntity->setCreatedAt(new \DateTime($articlesDb['created_at']));
-        
-        return $articleEntity;
+        return $articleDb;
     }
 
 }

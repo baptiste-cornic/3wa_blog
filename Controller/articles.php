@@ -7,6 +7,6 @@ require_once(ROOT . '/Factory/ArticleFactory.php');
 require_once(ROOT .'/Model/Repository/ArticleRepository.php');
 
 $articleFactory = new ArticleRepository();
-$articles = $articleFactory->findLasts(2);
+$articles = $articleFactory->findLasts(4);
 
 require_once(ROOT . '/View/articlesView.php');

@@ -4,29 +4,34 @@ require_once(ROOT . '/Model/Article.php');
 
 class ArticleFactory
 {
-    public function createArticle(string $title, string $content)
+    public function createArticleFromDb(array $article)
     {
-        $article = new Article();
-        $article->setTitle($title);
-        $article->setContent($content);
-        return $article;
+        $articleEntity = new Article();
+        $articleEntity->setId($article['id']);
+        $articleEntity->setTitle($article['title']);
+        $articleEntity->setStatus($article['status']);
+        $articleEntity->setContent($article['content']);
+        $articleEntity->setCreatedAt(new \DateTime($article['created_at']));
+         
+        return $articleEntity;
     }
 
-    public function createArticles(int $article_number):array
+    public function createArticlesFromDb(array $articlesDb)
     {
         $articles = [];
 
-        for($i = 1; $i <= $article_number; $i++)
-        {
-            $articleFactory = new ArticleFactory();
-            $article = $articleFactory->createArticle('titre '.$i, 'contenu '.$i);
-            array_push($articles, $article);
+        foreach ($articlesDb as $article) {
+            $articleEntity = new Article();
+            $articleEntity->setId($article['id']);
+            $articleEntity->setTitle($article['title']);
+            $articleEntity->setStatus($article['status']);
+            $articleEntity->setContent($article['content']);
+            $articleEntity->setCreatedAt(new \DateTime($article['created_at']));
+            array_push($articles, $articleEntity);
         }
 
         return $articles;
-
-        // test git
-        
     }
 
+    
 }
