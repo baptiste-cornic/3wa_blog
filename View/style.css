@@ -1,0 +1,47 @@
+*{margin: 0;
+}
+
+header{background-color: lightblue;
+    height: 150px;
+    display: flex;
+}
+
+body{text-align: center;
+}
+
+nav{margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{font-size: 45px;
+}
+
+h2{font-size: 30px;
+    padding: 20px;
+    font-family: cursive;
+}
+
+a{color: black;
+    text-decoration: none;   
+}
+
+nav div a{
+    font-size: 20px;
+}
+
+a:hover{color: orange;
+}
+
+nav div a{margin: 25px;
+}
+
+
+.content{width: 800px;
+    margin: auto;
+
+}
+
+.content div{margin: 20px; 
+}
+
