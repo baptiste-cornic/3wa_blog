@@ -2,5 +2,5 @@
 
  interface CalculateScoreInterface
 {
-    public function calculateScore($articleScore, $articleScoresCalculators);
+    public function calculateScore(int $articleScore, Article $article);
 }

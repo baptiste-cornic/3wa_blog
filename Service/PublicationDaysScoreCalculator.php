@@ -5,11 +5,11 @@ require_once(ROOT . "/Service/CalculateScoreInterface.php");
 
 class PublicationDaysScoreCalculator implements CalculateScoreInterface
 {
-    public function calculateScore($articleScore, $articleScoresCalculators)
+    public function calculateScore(int $articleScore,Article $article)
     {
         $articleScore = 0;
 
-        $articleDate = $articleScoresCalculators->getCreatedAt();
+        $articleDate = $article->getCreatedAt();
         $dateNow = new \DateTime('NOW');
 
         $daysSincePublication = $dateNow->diff($articleDate)->format("%a");
@@ -25,6 +25,7 @@ class PublicationDaysScoreCalculator implements CalculateScoreInterface
         ) {
             $articleScore += 1;
         }
+        //var_dump($articleScore);
         return $articleScore;
     }
     

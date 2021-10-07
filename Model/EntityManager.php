@@ -1,8 +1,10 @@
 <?php
 
 require_once(ROOT .'/Model/Database/MysqlDatabaseConnection.php');
+require_once(ROOT .'/Model/Entity/EntityInterface.php');
 
-class EntityManager
+
+class EntityManager 
 {
     private ?PDO $dbConnection;
 
@@ -29,14 +31,14 @@ class EntityManager
             "created_at" => $article->getCreatedAt()->format('Y-m-d H:i:s')
         ));
     }
-
+/*
     public function deleteArticle($id)
     {
         $sql = 'DELETE FROM article WHERE id = ?';
         $query = $this->dbConnection->prepare($sql);
         $query->execute([$id]);
     }
-
+*/
     public function persistCategory(Category $category)
     {
         $sql = "INSERT INTO category (title, color, status, created_at)
@@ -55,14 +57,14 @@ class EntityManager
             "color" => $category->getColor()
         ));
     }
-
+/*
     public function deleteCategory($id)
     {
         $sql = 'DELETE FROM category WHERE id = ?';
         $query = $this->dbConnection->prepare($sql);
         $query->execute([$id]);
     }
-
+*/
     public function persistUser(User $user)
     {
         $sql = "INSERT INTO user (username, email, password)
@@ -77,8 +79,12 @@ class EntityManager
             "email" => $user->getEmail(),
             "password" => $user->getPassword()            
         ));
+    }
 
-        // envoir d'un email de confirmation
-
+    public function delete(EntityInterface $entity) :void
+    {
+        $sql = 'DELETE FROM '.$entity->getTableName().' WHERE id = ?';
+        $query = $this->dbConnection->prepare($sql);
+        $query->execute([$entity->getId()]);
     }
 }

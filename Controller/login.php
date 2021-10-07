@@ -12,7 +12,6 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
 {
     $userFactory = new UserRepository();
     $user = $userFactory->findByUsername($_POST['username']);
-    var_dump(gettype($user));
     
     $message = "identifiants invalides";
 // m'emmerde si jamais le username existe pas donc je fais un header location dans le repository

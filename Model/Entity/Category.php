@@ -1,8 +1,9 @@
 <?php
 
 require_once(ROOT .'/Model/Entity/Publishable.php');
+require_once(ROOT .'/Model/Entity/EntityInterface.php');
 
-class Category extends Publishable
+class Category extends Publishable implements EntityInterface
 {   
     private string $color;
 
@@ -15,4 +16,9 @@ class Category extends Publishable
     {
         $this->color = $getColor;
     }    
+    
+    public function getTableName() :string
+    {
+        return 'category';
+    }
 }
