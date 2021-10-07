@@ -3,7 +3,7 @@
 require_once(ROOT . "/Model/Entity/Article.php");
 require_once(ROOT . "/Service/CalculateScoreInterface.php");
 
-class PublicationDaysScoreCalculator extends CalculateScoreInterface
+class PublicationDaysScoreCalculator implements CalculateScoreInterface
 {
     public function calculateScore($articleScore, $articleScoresCalculators)
     {

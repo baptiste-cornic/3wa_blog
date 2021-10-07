@@ -12,7 +12,6 @@ class ArticleScoreCalculator
         foreach($articleScoresCalculators as $articleScoreCalculator) {
             
             $articleScore += $articleScoreCalculator->calculateScore($articleScore, $article);
-            var_dump($articleScore);
         }
 
         return $articleScore / count($articleScoresCalculators);

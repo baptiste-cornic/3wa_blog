@@ -1,6 +1,6 @@
 <?php
 
-abstract class CalculateScoreInterface
+ interface CalculateScoreInterface
 {
-    public function calculateScore();
+    public function calculateScore($articleScore, $articleScoresCalculators);
 }
