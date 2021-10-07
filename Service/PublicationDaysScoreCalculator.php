@@ -1,14 +1,15 @@
 <?php
 
 require_once(ROOT . "/Model/Entity/Article.php");
+require_once(ROOT . "/Service/CalculateScoreInterface.php");
 
-class PublicationDaysScoreCalculator
+class PublicationDaysScoreCalculator extends CalculateScoreInterface
 {
-    public function daysScore($article)
+    public function calculateScore($articleScore, $articleScoresCalculators)
     {
         $articleScore = 0;
 
-        $articleDate = $article->getCreatedAt();
+        $articleDate = $articleScoresCalculators->getCreatedAt();
         $dateNow = new \DateTime('NOW');
 
         $daysSincePublication = $dateNow->diff($articleDate)->format("%a");

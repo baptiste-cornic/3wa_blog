@@ -1,14 +1,15 @@
 <?php
 
 require_once(ROOT . "/Model/Entity/Article.php");
+require_once(ROOT . "/Service/CalculateScoreInterface.php");
 
-class ArticleLengthScoreCalculator
+class ArticleLengthScoreCalculator extends CalculateScoreInterface
 {
-    public function lengthScore($article)
+    public function calculateScore($articleScore, $articleScoresCalculators)
     {
         $articleScore = 0;
         
-        $lengthContent = strlen($article->getContent());
+        $lengthContent = strlen($articleScoresCalculators->getContent());
 
         if ($lengthContent > 50) {
             $articleScore += 3;
