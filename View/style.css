@@ -48,3 +48,18 @@ section{display: flex;
 
 .category div, .articles_index div, .articles div{padding: 25px;
 }
+
+.form_message{font-size: 1.2em;
+    padding-top: 15px;
+}
+
+#subscribe_form{display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: auto;
+}
+
+#subscribe_form input[type="submit"]{margin: auto;
+    width: 75%;
+    margin-top: 15px;
+}

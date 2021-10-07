@@ -53,7 +53,6 @@ class EntityManager
             "created_at" => $category->getCreatedAt()->format('Y-m-d H:i:s'),
             "status" => $category->getStatus(),
             "color" => $category->getColor()
-            
         ));
     }
 
@@ -62,5 +61,22 @@ class EntityManager
         $sql = 'DELETE FROM category WHERE id = ?';
         $query = $this->dbConnection->prepare($sql);
         $query->execute([$id]);
+    }
+
+    public function persistUser(User $user)
+    {
+        $sql = "INSERT INTO user (username, email, password)
+                VALUES (
+                        :username, 
+                        :email, 
+                        :password
+                )";
+        $req = $this->dbConnection->prepare($sql);
+        $req->execute(array(
+            "username" => $user->getUsername(),
+            "email" => $user->getEmail(),
+            "password" => $user->getPassword()            
+        ));
+
     }
 }
