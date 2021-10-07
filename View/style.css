@@ -63,3 +63,7 @@ section{display: flex;
     width: 75%;
     margin-top: 15px;
 }
+
+.delete a{
+    color: red;
+}

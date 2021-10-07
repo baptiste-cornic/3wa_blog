@@ -78,5 +78,7 @@ class EntityManager
             "password" => $user->getPassword()            
         ));
 
+        // envoir d'un email de confirmation
+
     }
 }

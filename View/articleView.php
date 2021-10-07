@@ -20,6 +20,7 @@
                         <p>'.$article->getContent().'</p>
                         <p><em>Crée le : '.$article->getCreatedAt()->format('y-m-d').'</em></p>
                         <p> Etat : '.$article->getStatus().'</p>
+                        <p>Note : '.$articleScore.'</p>
                     </div>';
             ?>
         </div>
