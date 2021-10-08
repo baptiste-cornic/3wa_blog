@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../view/style.css">
+    <title>3wa Blog Articles</title>
+</head>
+<body>
+    <header>
+        {% include 'templates/headerView.php'  %}
+    </header>
+    <main>
+        <h2>3wa blog - articles</h2>
+        <div class="articles">
+            {% for article in articles %} 
+                <div>
+                    <h3><a href="article.php?id={{article.id}}">{{article.title}}</a></h3>
+                    <p>{{article.content}}</p>
+                </div>
+            {% endfor %} 
+        </div>
+    </main>    
+</body>
+</html>

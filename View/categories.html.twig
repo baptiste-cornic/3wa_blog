@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../view/style.css">
+    <title>3wa Blog Categories</title>
+</head>
+<body>
+    <header>
+        {% include 'templates/headerView.php'  %}
+    </header>
+    <main>
+        <h2>3wa blog - categories</h2>
+        <div class="category">
+        {% for category in categories %}
+           <div>
+                <h3><a href="category.php?id={{category.id}}">{{category.title}}</a></h3>
+                <p>{{category.color}}</p>
+            </div>
+        {% endfor %}
+        </div>        
+    </main>    
+</body>
+</html>

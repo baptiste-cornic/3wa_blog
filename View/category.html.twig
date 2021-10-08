@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../view/style.css">
+    <title>3wa Blog Catégorie</title>
+</head>
+<body>
+    <header>
+        {% include 'templates/headerView.php'  %}
+    </header>
+    <main>
+        <h2>3wa blog - catégorie</h2>
+        <div class="category">
+            <div>
+                <h3>{{category.title}}</h3>
+                <p>{{category.color}}</p>
+                <p><em>Crée le : {{category.createdAt|date("d/m/Y")}}</em></p>
+                <p> Etat : {{category.status}}</p>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

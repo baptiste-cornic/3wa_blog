@@ -23,4 +23,6 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
 
 }
 
-require_once(ROOT . '/View/loginView.php');
+echo $twig->render('login.html.twig', 
+    ['message' => $message ]);
+

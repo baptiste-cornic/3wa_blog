@@ -10,4 +10,5 @@ $id = $_GET['id'];
 $categoryFactory = new CategoryRepository();
 $category = $categoryFactory->findOne($id);
 
-require_once(ROOT . '/View/categoryView.php');
+echo $twig->render('category.html.twig', 
+    ['category' => $category ]);

@@ -9,4 +9,6 @@ require_once(ROOT .'/Model/Repository/CategoryRepository.php');
 $categoryFactory = new CategoryRepository();
 $categories = $categoryFactory->findLasts(4);
 
-require_once(ROOT . '/View/categoriesView.php');
+echo $twig->render('categories.html.twig', 
+    ['categories' => $categories ]);
+

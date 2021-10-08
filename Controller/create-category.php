@@ -2,7 +2,6 @@
 
 require_once('../Config/config.php');
 
-require_once(ROOT .'/View/create-categoryView.php');
 require_once(ROOT . '/Factory/CategoryFactory.php');
 require_once(ROOT . '/Model/EntityManager.php');
 
@@ -13,3 +12,6 @@ if(!empty($_POST['title']) && !empty($_POST['color'])){
     $persist->persistCategory($category);
     header('Location: index.php');
 }
+
+echo $twig->render('create-category.html.twig');
+

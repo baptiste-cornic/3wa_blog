@@ -11,4 +11,9 @@ $articles = $articleFactory->findAll();
 $categoryFactory = new CategoryRepository();
 $categories = $categoryFactory->findAll();
 
-require_once(ROOT . '/View/homeView.php');
+echo $twig->render('home.html.twig', 
+    ['categories' => $categories,
+     'articles' => $articles
+    ]);
+
+//require_once(ROOT . '/View/homeView.php');
